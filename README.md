@@ -8,7 +8,7 @@ docker run -d --name test_mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=rootpwd mysq
 ```  
 
 
-### docker mysql 접속  
+### docker mysql 접속 및 database 생성
 ```shell
 C:\Users\user>docker ps -a
 CONTAINER ID   IMAGE       COMMAND                  CREATED          STATUS          PORTS                                                  NAMES
