@@ -70,4 +70,5 @@ public class QuerydslExam3Test {
         assertThat(teamA.get(member.age.max())).isEqualTo(98);
 
     }
+
 }

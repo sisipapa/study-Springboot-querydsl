@@ -22,9 +22,9 @@ public class QuerydslExam1Test {
 
     @Test
     void selectJpql(){
-        String qlString = "select m from Member m where m.username = :username";
+        String queryString = "select m from Member m where m.username = :username";
         String username = "member1";
-        Member findMember = entityManager.createQuery(qlString, Member.class)
+        Member findMember = entityManager.createQuery(queryString, Member.class)
                 .setParameter("username", username)
                 .getSingleResult();
 
@@ -40,7 +40,7 @@ public class QuerydslExam1Test {
                 .from(m)
                 .where(m.username.eq(username))
                 .fetchOne();
-        assertThat(findMember.getUsername()).isEqualTo(username);
 
+        assertThat(findMember.getUsername()).isEqualTo(username);
     }
 }
