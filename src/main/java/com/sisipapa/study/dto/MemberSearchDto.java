@@ -1,9 +1,11 @@
 package com.sisipapa.study.dto;
 
+import lombok.Builder;
 import lombok.Data;
 
 @Data
-public class MemberSearchCondition {
+@Builder
+public class MemberSearchDto {
 
     private String username;
     private String teamName;

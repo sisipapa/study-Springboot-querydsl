@@ -3,7 +3,6 @@ package com.sisipapa.study;
 import com.querydsl.core.Tuple;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.sisipapa.study.entity.Member;
-import com.sisipapa.study.entity.QMember;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.sisipapa.study.entity.QMember.member;
 import static com.sisipapa.study.entity.QTeam.team;
@@ -46,9 +46,11 @@ public class QuerydslExam3Test {
                 .limit(10)
                 .fetch();
 
-        findMembers.stream().forEach(findMember -> {
-            log.info("id : {}", findMember.getId());
-        });
+        var membersUsername = findMembers.stream()
+                .map(findMember -> findMember.getUsername())
+                .collect(Collectors.toList());
+
+        log.info("member username : {}", membersUsername.toString());
     }
 
     @Test

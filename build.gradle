@@ -24,6 +24,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
     implementation 'com.querydsl:querydsl-jpa' //querydsl 추가
+    implementation 'com.querydsl:querydsl-apt' //querydsl 추가
 
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'mysql:mysql-connector-java'
@@ -35,10 +36,15 @@ dependencies {
     }
 }
 
+test {
+    useJUnitPlatform()
+}
+
 //querydsl 추가 시작
 def querydslDir = "$buildDir/generated/querydsl"
 
 querydsl {
+    library = "com.querydsl:querydsl-apt"
     jpa = true
     querydslSourcesDir = querydslDir
 }
@@ -56,6 +62,4 @@ compileQuerydsl {
 }
 //querydsl 추가 끝
 
-test {
-    useJUnitPlatform()
-}
+
